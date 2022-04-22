@@ -107,7 +107,7 @@ let empWage=empHrs*WAGE_PER_HOUR;
 console.log("Total Hrs:" +empHrs+"EmpWage: "+empWage);
 */
 
-//UC5
+//UC5 While_loop
 
 const IS_PART_TIME=1;
 const IS_FULL_TIME=2;
@@ -130,8 +130,8 @@ switch(empCheck)
 }
 }
 
-const MAX_HRS_IN_MONTH = 100;
-const NUM_OF_WORKING_DAYS =10;
+const MAX_HRS_IN_MONTH = 160;
+const NUM_OF_WORKING_DAYS =20;
 let totalEmpHrs = 0;
 let totalWorkingDays = 0;
 while (totalEmpHrs <= MAX_HRS_IN_MONTH &&
