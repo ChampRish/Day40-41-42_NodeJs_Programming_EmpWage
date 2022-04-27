@@ -1,14 +1,17 @@
-//UC11 Creating Employee Payroll Class
 class EmployeePayRollData{
     //Properties
     id;
     salary;
+    gender;
+    startDate
 
     //Constructor
-    constructor(id,name,salary){
-        this.id = id;
-        this.name = name;
-        this.salary = salary
+    constructor(...params){
+        this.id = params[0];
+        this.name = params[1];
+        this.salary = params[2];
+        this.gender = params[3];
+        this.startDate = params[4];
     }
 
     //Getter & Setter Methods
@@ -21,8 +24,13 @@ class EmployeePayRollData{
 
     //Method
     toString(){
-        return "ID = "+ this.id + " Name = "+ this.name + " Salary = " + this.salary;
+        const options = {year: 'numeric', month: 'long', day: 'numeric' };
+        const empDate = this.startDate === undefined ? "undefined" :
+                        this.startDate.toLocaleDateString("en-US", options);
+        return "ID = "+ this.id + " Name = "+ this.name + " Salary = " + this.salary + " Gender : "+ this.gender+ " StartDate : "+ this.startDate;
     }
 }
-let employeeObject = new EmployeePayRollData(1,'Viney',200000);
+let employeeObject = new EmployeePayRollData(1,'Rishabh',200000);
 console.log(employeeObject.toString());
+let newEmployeeObject = new EmployeePayRollData(2,'Amit',200000,'M',new Date());
+console.log(newEmployeeObject.toString());
