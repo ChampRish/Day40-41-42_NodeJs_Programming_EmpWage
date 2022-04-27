@@ -1,9 +1,8 @@
+//Uc14 RG----
 class EmployeePayRollData{
     //Properties
     id;
     salary;
-    gender;
-    startDate
 
     //Constructor
     constructor(...params){
@@ -21,6 +20,17 @@ class EmployeePayRollData{
         if (namePattern.test(name)) this._name = name;
         else throw 'Name Pattern is incorrect';
     }
+    get gender() {return this._gender};
+    set gender(gender){
+        let genderPattern = new RegExp('^[F,M]{1}');
+        if (genderPattern.test(gender)) this._gender = gender;
+        else throw 'Gender Pattern is incorrect';
+    }
+    get startDate() {return this._startDate};
+    set startDate(startDate){
+        if (startDate <= new Date()) this._startDate = startDate;
+        else throw 'Date can not be of future';
+    }
 
     //Method
     toString(){
@@ -30,14 +40,21 @@ class EmployeePayRollData{
         return "ID = "+ this.id + " Name = "+ this.name + " Salary = " + this.salary + " Gender : "+ this.gender+ " StartDate : "+ this.startDate;
     }
 }
-let employeeObject = new EmployeePayRollData(1,'Viney',200000);
-console.log(employeeObject.toString());
+let employeeObject1 = new EmployeePayRollData(1,'Vikky',200000,'M',new Date());
+console.log(employeeObject1.toString());
 try{
-    let newEmployeeObject = new EmployeePayRollData(2,'vishal',200000,'M',new Date());
-    console.log(newEmployeeObject.toString());
+    let employeeObject = new EmployeePayRollData(2,'Viney',200000,'S',new Date());
+    console.log(employeeObject.toString());
 }
-catch(ex){
+catch (ex){
     console.error(ex);
 }
-let newEmployeeObject = new EmployeePayRollData(2,'Vishal',200000,'M',new Date());
-console.log(newEmployeeObject.toString());
+finally{
+    try{
+        let newEmployeeObject = new EmployeePayRollData(3,'Vishu',200000,'F',new Date(2022,3,7,12,12,12,12));
+        console.log(newEmployeeObject.toString());
+    }
+    catch (ex){
+        console.error(ex);
+    }
+}
